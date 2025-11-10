@@ -50,6 +50,14 @@ class VideoPlayer {
         document.addEventListener('mousemove', (e) => this.drag(e));
         document.addEventListener('mouseup', () => this.endDrag());
         
+        // Fallback: Start scroll animation after 2 seconds if metadata doesn't load
+        setTimeout(() => {
+            if (!this.scrollTimeout) {
+                console.log('[VideoPlayer] Fallback: Starting scroll animation');
+                this.scheduleScrollAnimation();
+            }
+        }, 2000);
+        
         // Show/hide controls on hover
         this.videoPlayer.addEventListener('mouseenter', () => this.showControls());
         this.videoPlayer.addEventListener('mouseleave', () => this.hideControls());
@@ -94,6 +102,9 @@ class VideoPlayer {
         // Get scroll delay from video data attribute (in seconds)
         const scrollDelay = parseFloat(this.video.dataset.scrollDelay) || 0;
         
+        // Debug logging for GitHub Pages
+        console.log(`[VideoPlayer] Scheduling scroll animation with delay: ${scrollDelay}s`);
+        
         // Clear any existing timeout
         if (this.scrollTimeout) {
             clearTimeout(this.scrollTimeout);
@@ -101,15 +112,24 @@ class VideoPlayer {
         
         // Schedule the scroll animation
         this.scrollTimeout = setTimeout(() => {
+            console.log(`[VideoPlayer] Starting scroll animation after ${scrollDelay}s delay`);
             this.startScrollAnimation();
         }, scrollDelay * 1000); // Convert to milliseconds
     }
-    
+
     startScrollAnimation() {
+        console.log(`[VideoPlayer] startScrollAnimation called`);
+        
+        // Ensure we have the screenshot element
+        if (!this.screenshotImg) {
+            console.error('[VideoPlayer] Screenshot image element not found!');
+            return;
+        }
+        
         // Remove any existing animation class first
         this.screenshotImg.classList.remove('scrolling');
         
-        // Trigger reflow to ensure class removal is processed
+        // Force a reflow to ensure class removal is processed
         this.screenshotImg.offsetHeight;
         
         // Set animation duration - snappy and realistic (4-6 seconds)
@@ -117,11 +137,20 @@ class VideoPlayer {
         const animationDuration = Math.min(Math.max(videoDuration * 0.5, 4), 6); // 50% of video duration, min 4s, max 6s
         this.screenshotImg.style.setProperty('--animation-duration', `${animationDuration}s`);
         
+        console.log(`[VideoPlayer] Adding scrolling class with duration: ${animationDuration}s`);
+        
         // Add the scrolling animation class
         this.screenshotImg.classList.add('scrolling');
-    }
-    
-    pause() {
+        
+        // Verify the class was added
+        setTimeout(() => {
+            const hasClass = this.screenshotImg.classList.contains('scrolling');
+            console.log(`[VideoPlayer] Scrolling class applied: ${hasClass}`);
+            if (!hasClass) {
+                console.error('[VideoPlayer] Failed to apply scrolling class!');
+            }
+        }, 100);
+    }    pause() {
         this.video.pause();
         this.stopScrollAnimation();
     }
@@ -170,8 +199,12 @@ class VideoPlayer {
     }
     
     onMetadataLoaded() {
+        console.log('[VideoPlayer] Video metadata loaded');
         const duration = this.formatTime(this.video.duration);
         this.durationDisplay.textContent = duration;
+        
+        // Auto-start scroll animation when metadata is loaded
+        this.scheduleScrollAnimation();
     }
     
     onTimeUpdate() {
