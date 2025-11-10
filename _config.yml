@@ -1,0 +1,28 @@
+domain: lbbgo.com
+url: https://lbbgo.com
+baseurl: ""
+
+# GitHub Pages settings
+markdown: kramdown
+highlighter: rouge
+safe: true
+incremental: false
+
+# Plugin settings
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# SEO
+title: "Launch Big Brands - Scale Your Business with Video Marketing"
+description: "Professional video marketing solutions to help your business grow and scale effectively."
+author: "Launch Big Brands"
+
+# Collections
+permalink: pretty
+
+# Exclude files
+exclude:
+  - README.md
+  - .gitignore

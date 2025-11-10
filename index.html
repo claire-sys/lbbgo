@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html class="js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Launch Big Brands ™</title>
+
+    <!-- Meta Tags -->
+    <meta property="og:site_name" content="Launch Big Brands ™">
+    <meta property="og:title" content="Launch Big Brands ™">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Turn your Shopify store into a predictable revenue engine">
+    <meta property="og:image" content="assets/images/Untitled_design_16_4.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="628">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Launch Big Brands ™">
+    <meta name="twitter:description" content="Turn your Shopify store into a predictable revenue engine">
+
+    <!-- Fonts -->
+    <style>
+      @font-face {
+        font-family: Assistant;
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        src: url("assets/fonts/assistant_n4.9120912a469cad1cc292572851508ca49d12e768.woff2") format("woff2"),
+             url("assets/fonts/assistant_n4.6e9875ce64e0fefcd3f4446b7ec9036b3ddd2985.woff") format("woff");
+      }
+
+      @font-face {
+        font-family: Assistant;
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+        src: url("assets/fonts/assistant_n7.bf44452348ec8b8efa3aa3068825305886b1c83c.woff2") format("woff2"),
+             url("assets/fonts/assistant_n7.0c887fee83f6b3bda822f1150b912c72da0f7b64.woff") format("woff");
+      }
+
+      /* CSS Variables */
+      :root,
+      .color-scheme-1 {
+        --color-background: 255,255,255;
+        --gradient-background: #ffffff;
+        --color-foreground: 18,18,18;
+        --color-background-contrast: 191,191,191;
+        --color-shadow: 18,18,18;
+        --color-button: 18,18,18;
+        --color-button-text: 255,255,255;
+        --color-secondary-button: 255,255,255;
+        --color-secondary-button-text: 18,18,18;
+        --color-link: 18,18,18;
+        --color-badge-foreground: 18,18,18;
+        --color-badge-background: 255,255,255;
+        --color-badge-border: 18,18,18;
+        --payment-terms-background-color: rgb(255 255 255);
+        
+        --font-body-family: Assistant, sans-serif;
+        --font-body-style: normal;
+        --font-body-weight: 400;
+        --font-body-weight-bold: 700;
+        --font-body-scale: 1.0;
+        
+        --page-width: 120rem;
+        --page-width-margin: 0rem;
+        
+        --spacing-sections-desktop: 0px;
+        --spacing-sections-mobile: 0px;
+        
+        --buttons-radius: 0px;
+        --buttons-border-width: 1px;
+        --buttons-border-opacity: 1.0;
+        --buttons-shadow-opacity: 0.0;
+        --inputs-radius: 0px;
+        --inputs-border-width: 1px;
+        --inputs-border-opacity: 0.55;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      html {
+        box-sizing: border-box;
+        font-size: calc(var(--font-body-scale) * 62.5%);
+        height: 100%;
+      }
+
+      body {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-columns: 100%;
+        min-height: 100%;
+        margin: 0;
+        font-size: 1.5rem;
+        letter-spacing: 0.06rem;
+        line-height: calc(1 + 0.8 / var(--font-body-scale));
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+      }
+
+      @media screen and (min-width: 750px) {
+        body {
+          font-size: 1.6rem;
+        }
+      }
+    </style>
+
+    <!-- Main CSS -->
+    <link href="assets/css/base.css" rel="stylesheet" type="text/css" media="all">
+    <link href="assets/css/component-slideshow.css" rel="stylesheet" type="text/css" media="all">
+    <link href="assets/css/component-slider.css" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Scripts -->
+    <script src="assets/js/constants.js" defer></script>
+    <script src="assets/js/pubsub.js" defer></script>
+    <script src="assets/js/global.js" defer></script>
+    <script src="assets/js/details-disclosure.js" defer></script>
+    <script src="assets/js/details-modal.js" defer></script>
+    <script src="assets/js/search-form.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+</head>
+
+<body class="gradient">
+    <!-- Skip to content link -->
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      Skip to content
+    </a>
+
+    <!-- Header -->
+    <div class="utility-bar color-scheme-1 gradient">
+      <div class="page-width utility-bar__grid">
+        <div style="background:#facc15;color:#0f172a;text-align:center;
+                padding:8px 14px;
+                font-weight:800;font-size:14px;letter-spacing:.02em;
+                display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;">
+          🔒 Limited spots available
+          <a href="#book" style="position:relative;overflow:hidden;
+                    padding:6px 16px;
+                    border-radius:999px;
+                    background:linear-gradient(135deg,#2563eb,#06b6d4);
+                    color:#fff;
+                    font-weight:800;
+                    font-size:13px;
+                    text-decoration:none;
+                    box-shadow:0 3px 10px rgba(37,99,235,.3);
+                    transition:transform .2s ease;">
+            Get Started
+            <span style="position:absolute;top:0;left:-60%;width:50%;height:100%;
+                         background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));
+                         transform:skewX(-20deg);
+                         animation:shine 2.5s infinite;"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <style>
+    @keyframes shine {
+      0% { left:-60%; }
+      60% { left:120%; }
+      100% { left:120%; }
+    }
+    </style>
+
+    <!-- Main Header -->
+    <header style="text-align: center; padding: 20px 0;">
+      <h1 style="margin: 0;">
+        <a href="/" style="text-decoration: none; color: inherit;">
+          <img src="assets/images/Untitled_design_16.png" 
+               alt="Launch Big Brands ™" 
+               style="height: 54px; width: auto;"
+               srcset="assets/images/Untitled_design_16_1.png 160w, 
+                       assets/images/Untitled_design_16_2.png 240w, 
+                       assets/images/Untitled_design_16_3.png 320w">
+        </a>
+      </h1>
+    </header>
+
+    <!-- Main Content -->
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      
+      <!-- Hero Section -->
+      <section style="background:#ffffff;position:relative;">
+        <style>
+          .hero-section {
+            --ink:#0f172a;
+            --muted:#475569;
+            --glow:#2563eb;
+            --glow2:#06b6d4;
+            --max:860px;
+            --padY:70px;
+          }
+          .hero-section .wrap{
+            max-width:var(--max);
+            margin:0 auto;
+            padding:var(--padY) 20px;
+            text-align:center;
+            color:var(--ink);
+          }
+
+          /* Eyebrow */
+          .hero-section .eyebrow{
+            color:var(--glow);
+            text-transform:uppercase;
+            letter-spacing:.2em;
+            font-weight:800;
+            font-size:13px;
+            margin:0 0 14px;
+          }
+
+          /* Headline */
+          .hero-section h1{
+            margin:0 0 18px;
+            font-weight:900;
+            font-size:clamp(30px,5vw,46px);
+            line-height:1.15;
+          }
+
+          /* Subheadline */
+          .hero-section .sub{
+            color:var(--muted);
+            margin:0 auto 26px;
+            font-size:18px;
+            line-height:1.55;
+            max-width:640px;
+          }
+
+          /* CTA */
+          .hero-section .cta{
+            display:inline-block;
+            background:linear-gradient(135deg,var(--glow),var(--glow2));
+            color:#fff; text-decoration:none;
+            font-weight:900; font-size:20px;
+            padding:18px 40px; border-radius:14px;
+            box-shadow:0 8px 28px rgba(37,99,235,.25);
+            transition:transform .18s ease, box-shadow .18s ease;
+            margin-bottom:24px;
+          }
+          @media (hover:hover){
+            .hero-section .cta:hover{
+              transform:translateY(-2px) scale(1.03);
+              box-shadow:0 12px 36px rgba(37,99,235,.35);
+            }
+          }
+
+          /* Proof strip */
+          .hero-section .proof{
+            display:flex; justify-content:center; align-items:center;
+            gap:14px; flex-wrap:wrap; margin-top:12px;
+          }
+          .hero-section .faces{ display:flex; align-items:center }
+          .hero-section .face{
+            width:44px; height:44px; border-radius:999px; overflow:hidden;
+            border:2px solid #fff; box-shadow:0 4px 12px rgba(2,6,23,.10);
+            margin-left:-10px;
+          }
+          .hero-section .face:first-child{ margin-left:0 }
+          .hero-section .face img{ width:100%; height:100%; object-fit:cover; }
+
+          .hero-section .proof-text{
+            font-weight:700; color:var(--ink); font-size:15px;
+            display:flex; align-items:center; gap:6px;
+          }
+          .hero-section .stars{ display:inline-flex; gap:2px }
+          .hero-section .stars svg{ width:16px; height:16px; fill:#f59e0b }
+
+          /* Mobile polish */
+          @media (max-width:640px){
+            .hero-section{ --padY:50px; }
+            .hero-section .face{ width:40px; height:40px }
+            .hero-section .proof-text{ font-size:14px }
+          }
+        </style>
+
+        <div class="hero-section">
+          <div class="wrap">
+            <div class="eyebrow">READY TO GROW YOUR SHOPIFY STORE?</div>
+            <h1>Turn your Shopify store into a predictable revenue engine</h1>
+            <p class="sub">We fix the leaks, run your ads, and set up systems that scale.</p>
+
+            <a class="cta" href="#book">Book Your Free Call Now</a>
+
+            <div class="proof">
+              <div class="faces" aria-hidden="true">
+                <span class="face"><img src="assets/images/2.png" alt=""></span>
+                <span class="face"><img src="assets/images/3.png" alt=""></span>
+                <span class="face"><img src="assets/images/4.png" alt=""></span>
+                <span class="face"><img src="assets/images/1.png" alt=""></span>
+              </div>
+              <div class="proof-text">
+                Over 50 brands trusted us in 2025
+                <span class="stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1.5l2.7 5.48 6.05.88-4.38 4.27 1.03 6.02L10 15.97 4.6 18.15l1.03-6.02L1.25 7.86l6.05-.88L10 1.5z"></path></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1.5l2.7 5.48 6.05.88-4.38 4.27 1.03 6.02L10 15.97 4.6 18.15l1.03-6.02L1.25 7.86l6.05-.88L10 1.5z"></path></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1.5l2.7 5.48 6.05.88-4.38 4.27 1.03 6.02L10 15.97 4.6 18.15l1.03-6.02L1.25 7.86l6.05-.88L10 1.5z"></path></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1.5l2.7 5.48 6.05.88-4.38 4.27 1.03 6.02L10 15.97 4.6 18.15l1.03-6.02L1.25 7.86l6.05-.88L10 1.5z"></path></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1.5l2.7 5.48 6.05.88-4.38 4.27 1.03 6.02L10 15.97 4.6 18.15l1.03-6.02L1.25 7.86l6.05-.88L10 1.5z"></path></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section style="background:#f0f6ff;padding:36px 0;">
+        <style>
+          .stats-section{
+            --ink:#0f172a; --muted:#475569;
+            --b1:#2563eb; --b2:#06b6d4;
+            --max:900px;
+          }
+          .stats-section .wrap{
+            max-width:var(--max); margin:0 auto; padding:0 16px;
+            display:grid; gap:18px; grid-template-columns:repeat(2,1fr);
+            text-align:center; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+          }
+          /* Stat block */
+          .stats-section .stat{ padding:6px }
+          .stats-section .num{
+            margin:0 0 4px; font-weight:900; line-height:1;
+            font-size:26px; letter-spacing:-.02em;
+            background:linear-gradient(135deg,var(--b1),var(--b2));
+            background-clip:text;
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            display:inline-block;
+          }
+          .stats-section .desc{
+            color:var(--muted); font-size:13px; font-weight:600;
+            line-height:1.4; letter-spacing:.02em;
+          }
+          @media(min-width:640px){
+            .stats-section .wrap{ grid-template-columns:repeat(4,1fr); gap:14px }
+            .stats-section .num{ font-size:28px }
+            .stats-section .desc{ font-size:14px }
+          }
+        </style>
+
+        <div class="stats-section">
+          <div class="wrap">
+            <div class="stat">
+              <div class="num">50+</div>
+              <div class="desc">Brands Scaled</div>
+            </div>
+            <div class="stat">
+              <div class="num">$2M+</div>
+              <div class="desc">Revenue Generated</div>
+            </div>
+            <div class="stat">
+              <div class="num">3.2x</div>
+              <div class="desc">Average ROAS</div>
+            </div>
+            <div class="stat">
+              <div class="num">24h</div>
+              <div class="desc">Response Time</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section style="background:#ffffff;padding:56px 20px;">
+        <style>
+          .services-section{
+            --ink:#0f172a; --muted:#475569;
+            --b1:#2563eb; --b2:#06b6d4;
+            --line:#e5e7eb; --soft:#f8fafc;
+            --max:1100px; --r:16px;
+            --shadow:0 14px 40px rgba(2,6,23,.10);
+          }
+          .services-section .wrap{
+            max-width:var(--max); margin:0 auto; color:var(--ink);
+            font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+          }
+          .services-section .title{
+            text-align:center; font-weight:900;
+            font-size:clamp(24px,4.8vw,36px);
+            margin:0 0 8px; letter-spacing:-.01em;
+          }
+          .services-section .sub{
+            text-align:center; color:var(--muted);
+            margin:0 auto 28px; max-width:760px;
+            font-size:16px; line-height:1.6;
+          }
+          .services-section .grid{
+            display:grid; gap:16px; grid-template-columns:1fr;
+          }
+          @media (min-width:700px){
+            .services-section .grid{ grid-template-columns:repeat(2,1fr); }
+          }
+          @media (min-width:1024px){
+            .services-section .grid{ grid-template-columns:repeat(3,1fr); }
+          }
+          .services-section .card{
+            background:var(--soft); border:1px solid var(--line);
+            border-radius:var(--r); box-shadow:var(--shadow);
+            padding:18px; display:grid; grid-template-columns:auto 1fr;
+            gap:12px 12px; align-items:start;
+            transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s, border-color .25s;
+          }
+          .services-section .card:hover{
+            transform:translateY(-2px);
+            box-shadow:0 20px 50px rgba(2,6,23,.14);
+            border-color:#dbeafe;
+          }
+          .services-section .icon{
+            width:46px; height:46px; border-radius:12px;
+            display:grid; place-items:center;
+            color:#fff; font-size:22px;
+            background:linear-gradient(135deg,var(--b1),var(--b2));
+            box-shadow:0 10px 26px rgba(37,99,235,.28);
+            flex-shrink:0;
+          }
+          .services-section h3{
+            margin:2px 0 0; font-size:18px; font-weight:900;
+            letter-spacing:-.01em;
+          }
+          .services-section p{
+            grid-column:1 / -1; margin:6px 0 0;
+            color:var(--muted); line-height:1.65; font-size:15.5px;
+          }
+        </style>
+
+        <div class="services-section">
+          <div class="wrap">
+            <h2 class="title">What We Can Do for You</h2>
+            <p class="sub">We cover every growth lever that matters: ads, email, content, conversion, AI, and direct partnership — all done for you.</p>
+
+            <div class="grid">
+              <article class="card">
+                <div class="icon">📣</div>
+                <h3>Ad Management + Creative</h3>
+                <p>We run your ads and produce scroll-stopping creatives that attract the right buyers and convert clicks into sales.</p>
+              </article>
+
+              <article class="card">
+                <div class="icon">📧</div>
+                <h3>Email Marketing That Prints Revenue</h3>
+                <p>We set up automated flows and campaigns that recover abandoned carts, re-engage past buyers, and increase lifetime value.</p>
+              </article>
+
+              <article class="card">
+                <div class="icon">🎯</div>
+                <h3>Social Media Content Engine</h3>
+                <p>We create a steady stream of branded content and strategy so your store shows up consistently on Instagram, TikTok, and beyond.</p>
+              </article>
+
+              <article class="card">
+                <div class="icon">🧭</div>
+                <h3>Landing Pages + CRO</h3>
+                <p>We build and optimize pages designed to maximize conversions — every click has one goal: turning visitors into customers.</p>
+              </article>
+
+              <article class="card">
+                <div class="icon">🤖</div>
+                <h3>AI-Powered Operations</h3>
+                <p>From automated customer service to streamlined workflows, we plug in AI systems that cut overhead and keep your store running smoothly.</p>
+              </article>
+
+              <article class="card">
+                <div class="icon">🤝</div>
+                <h3>Partnership + Guidance</h3>
+                <p>You're not left alone. We give you a clear roadmap, regular calls, and transparent communication. Our expertise and values ensure you always know the next step.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section 1 -->
+      <section style="text-align:center; margin:30px 0;">
+        <a href="#book" style="
+             display:inline-block;
+             background:linear-gradient(135deg,#2563eb,#06b6d4);
+             color:#fff;
+             text-decoration:none;
+             font-weight:800;
+             font-size:18px;
+             padding:18px 34px;
+             border-radius:14px;
+             box-shadow:0 6px 20px rgba(37,99,235,.25);
+             transition:transform .2s ease, box-shadow .2s ease;
+           " onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 10px 28px rgba(37,99,235,.35)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 6px 20px rgba(37,99,235,.25)';">
+          Book Your Free Call Now
+        </a>
+      </section>
+
+      <!-- Reasons Section -->
+      <section style="background:#fff;padding:56px 20px;">
+        <style>
+          .reasons-section{
+            --ink:#0f172a; --muted:#475569; --ok:#2563eb; --max:1100px;
+          }
+          .reasons-section .wrap{ 
+            max-width:var(--max); 
+            margin:0 auto; 
+            color:var(--ink);
+          }
+          .reasons-section h2{
+            text-align:center; font-weight:900;
+            font-size:clamp(24px,4.6vw,36px); line-height:1.15; margin:0 0 26px;
+          }
+          .reasons-section ul{ 
+            list-style:none; padding:0; margin:0; 
+            display:grid; gap:18px;
+          }
+          @media (min-width:900px){
+            .reasons-section ul{ 
+              max-width:760px; 
+              margin:0 auto; 
+            }
+          }
+          .reasons-section li{
+            display:flex; align-items:flex-start; gap:12px;
+            font-size:16px; line-height:1.55; color:var(--muted);
+            text-align:left;
+          }
+          .reasons-section .icon{
+            flex:0 0 22px; width:22px; height:22px; margin-top:2px;
+            color:#fff; background:var(--ok); border-radius:50%;
+            display:grid; place-items:center;
+          }
+          .reasons-section .icon svg{ width:14px; height:14px; display:block; }
+          .reasons-section strong{ color:var(--ink); font-weight:800; }
+        </style>
+
+        <div class="reasons-section">
+          <div class="wrap">
+            <h2>10 Reasons Growing Brands Partner With Us</h2>
+
+            <ul>
+              <li>
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </span>
+                <span><strong>Not a Course</strong> — we don't give you lessons. We roll up our sleeves and build the business with you.</span>
+              </li>
+
+              <li>
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </span>
+                <span><strong>Fast, No-BS Execution</strong> — we cut out the fluff and move from strategy to action at the speed your business needs.</span>
+              </li>
+
+              <li>
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </span>
+                <span><strong>Ads That Actually Convert</strong> — from campaign structure to creatives, we design and manage ads that bring in profitable sales.</span>
+              </li>
+
+              <li>
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </span>
+                <span><strong>Save 6–12 Months</strong> — skip the trial and error on tech, ads, and funnels. We set it all up from day one.</span>
+              </li>
+
+              <li>
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </span>
+                <span><strong>Avoid Expensive Mistakes</strong> — our tested systems prevent wasted spend on the wrong strategies.</span>
+              </li>
+
+              <li>
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </span>
+                <span><strong>A Complete Team</strong> — from ad campaigns and creatives to landing pages, email flows, social media, and reporting, every growth lever is managed for you.</span>
+              </li>
+
+              <li>
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </span>
+                <span><strong>Radical Transparency & Support</strong> — clear reporting, open communication, and direct access to our team. You'll always know what's working and get guidance every step of the way.</span>
+              </li>
+
+              <li>
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </span>
+                <span><strong>Analytics & Reporting</strong> — we set up proper tracking across your store and campaigns, then give you clear reports and insights so you always know what's driving sales and growth.</span>
+              </li>
+
+              <li>
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </span>
+                <span><strong>Fixed Fees That Suit All Growth Stages</strong> — transparent pricing designed for flexibility, starting at just $1,000.</span>
+              </li>
+
+              <li>
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </span>
+                <span><strong>Built on Experience</strong> — over 100 brands launched and dozens of exits, powered by a decade of ecommerce expertise.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section style="background:#fff;padding:64px 20px;">
+        <style>
+          .about-section{
+            --ink:#0f172a; --muted:#475569;
+            --b1:#2563eb; --b2:#06b6d4;
+            --max:1100px;
+          }
+          .about-section .wrap{
+            max-width:var(--max); margin:0 auto;
+            display:grid; gap:40px; align-items:center;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+          }
+          .about-section .eyebrow{
+            color:var(--b1); text-transform:uppercase;
+            letter-spacing:.18em; font-weight:800; font-size:13px;
+            margin:0 0 10px;
+          }
+          .about-section h2{
+            font-weight:900; margin:0 0 14px;
+            font-size:clamp(26px,4.5vw,38px); line-height:1.2; color:var(--ink);
+          }
+          .about-section .sub{
+            font-size:18px; color:var(--muted);
+            margin:0 0 20px; line-height:1.55;
+          }
+          .about-section .body{
+            font-size:16px; color:var(--muted); line-height:1.65;
+          }
+          .about-section .image{
+            text-align:center;
+          }
+          .about-section .image img{
+            max-width:100%; height:auto;
+            border-radius:16px;
+            box-shadow:0 10px 30px rgba(2,6,23,.1);
+          }
+          @media(max-width:640px){
+            .about-section .wrap{ gap:28px }
+            .about-section h2{ font-size:24px }
+            .about-section .sub{ font-size:16px }
+          }
+        </style>
+
+        <div class="about-section">
+          <div class="wrap">
+            <!-- Left: text -->
+            <div>
+              <div class="eyebrow">BEHIND LAUNCH BIG BRANDS</div>
+              <h2>A Decade of Scaling Profitable Ecommerce Stores</h2>
+              <p class="sub">Our mission is simple: help founders grow faster and avoid the mistakes we've already lived.</p>
+              <div class="body">
+                <p>We are Mike & Hamza. Since 2016, we've built and exited multiple ecommerce brands of our own, turning ideas into profitable businesses and selling them for significant exits.</p>
+                <p>Launch Big Brands isn't theory or guesswork. It's the exact playbook we've refined by running our own stores, testing what works, and cutting what doesn't.</p>
+                <p>Now, we partner with founders like you. Whether you're just starting to see traction or stuck at a plateau, we plug in our expertise to help you scale with clarity, confidence, and proven systems.</p>
+              </div>
+            </div>
+
+            <!-- Right: image -->
+            <div class="image">
+              <img src="assets/images/Untitled_design_18.png" alt="Mike & Hamza, founders of Launch Big Brands" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section 2 -->
+      <section style="text-align:center; margin:30px 0;">
+        <a href="#book" style="
+             display:inline-block;
+             background:linear-gradient(135deg,#2563eb,#06b6d4);
+             color:#fff;
+             text-decoration:none;
+             font-weight:800;
+             font-size:18px;
+             padding:18px 34px;
+             border-radius:14px;
+             box-shadow:0 6px 20px rgba(37,99,235,.25);
+             transition:transform .2s ease, box-shadow .2s ease;
+           " onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 10px 28px rgba(37,99,235,.35)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 6px 20px rgba(37,99,235,.25)';">
+          Book Your Free Call Now
+        </a>
+      </section>
+
+      <!-- FAQ Section -->
+      <section style="max-width:900px;margin:0 auto;padding:40px 20px">
+        <div style="color:#2563eb;text-transform:uppercase;letter-spacing:.24em;font-weight:800;font-size:12px;margin-bottom:6px">
+          FAQs
+        </div>
+        <h2 style="font-size:28px;margin:0 0 24px">Good questions. Straight answers.</h2>
+
+        <style>
+          #faq-container .faq-item{border:1px solid #e5e7eb;border-radius:14px;margin-bottom:10px;background:#fff;overflow:hidden;box-shadow:0 2px 10px rgba(2,6,23,.06)}
+          #faq-container .faq-q{padding:16px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+          #faq-container .faq-q span:first-child{color:#0f172a}
+          #faq-container .faq-a{padding:0 20px 16px 20px;color:#475569;display:none;line-height:1.55}
+          #faq-container .faq-icon{background:#2563eb;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;flex-shrink:0;transition:transform .2s ease}
+          #faq-container .open .faq-a{display:block}
+          #faq-container .open .faq-icon{transform:rotate(45deg)}
+        </style>
+
+        <div id="faq-container">
+          <!-- 1 -->
+          <div class="faq-item open">
+            <div class="faq-q" role="button" aria-expanded="true">
+              <span>Do you work with brand-new stores or only established ones?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              We specialize in helping Shopify stores that already have products and are live, even if you've only made a handful of sales. If you're just starting, we'll point you in the right direction.
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="faq-item">
+            <div class="faq-q" role="button" aria-expanded="false">
+              <span>What exactly do you manage for me?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              We handle paid ads, creative production, email marketing, CRO landing pages, and AI-powered operations. You focus on your product and brand while we scale traffic and sales.
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="faq-item">
+            <div class="faq-q" role="button" aria-expanded="false">
+              <span>How soon can I expect results?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              Most clients start seeing meaningful improvements within the first 30 days. We focus on quick wins while building long-term growth systems.
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="faq-item">
+            <div class="faq-q" role="button" aria-expanded="false">
+              <span>Do I keep control of my accounts?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              Yes. Your Shopify, ad accounts, and email platforms remain under your ownership. We plug in our systems and expertise.
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div class="faq-item">
+            <div class="faq-q" role="button" aria-expanded="false">
+              <span>Does the price include ad spend?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              No. Our fee covers strategy, management, creative, CRO, and reporting. Ad spend is paid directly to platforms like Meta and Google and stays fully under your control.
+            </div>
+          </div>
+
+          <!-- 6 -->
+          <div class="faq-item">
+            <div class="faq-q" role="button" aria-expanded="false">
+              <span>What if I've tried ads before and failed?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              That's where we come in. We audit and fix creative, targeting, and funnel issues, then rebuild for profitable acquisition.
+            </div>
+          </div>
+
+          <!-- 7 -->
+          <div class="faq-item">
+            <div class="faq-q" role="button" aria-expanded="false">
+              <span>Is this a course or coaching program?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              No. We're not a course. We execute for you, with transparent reporting and strategic guidance along the way.
+            </div>
+          </div>
+
+          <!-- 8 -->
+          <div class="faq-item">
+            <div class="faq-q" role="button" aria-expanded="false">
+              <span>What's included in your fee?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              Ad management, creative production, landing pages and CRO, email flows, reporting, and ongoing support. No hidden costs.
+            </div>
+          </div>
+
+          <!-- 9 -->
+          <div class="faq-item">
+            <div class="faq-q" role="button" aria-expanded="false">
+              <span>How long are your contracts?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              No. We offer flexible options, from one-time packages to ongoing retainers , based on your goals. You're free to stop at any time.
+            </div>
+          </div>
+
+          <!-- 10 -->
+          <div class="faq-item">
+            <div class="faq-q" role="button" aria-expanded="false">
+              <span>Why choose Launch Big Brands instead of freelancers?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">
+              Freelancers cover single pieces. We give you an integrated senior team running every growth lever together.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA Section -->
+      <section style="background:#f8fafc;padding:80px 20px;text-align:center">
+        <div style="max-width:800px;margin:0 auto">
+          <h2 style="font-size:clamp(28px,5vw,42px);font-weight:900;margin:0 0 16px;color:#0f172a;line-height:1.2">
+            Ready to Launch Big? Your Growth Journey Starts Here.
+          </h2>
+          <p style="font-size:18px;color:#475569;margin:0 0 32px;line-height:1.6">
+            Book a free call and get a clear plan to scale your Shopify store. No pitch, just actionable insights.
+          </p>
+          <a href="#book" style="
+               display:inline-block;
+               background:linear-gradient(135deg,#2563eb,#06b6d4);
+               color:#fff;
+               text-decoration:none;
+               font-weight:800;
+               font-size:20px;
+               padding:20px 40px;
+               border-radius:16px;
+               box-shadow:0 8px 25px rgba(37,99,235,.3);
+               transition:transform .2s ease, box-shadow .2s ease;
+             " onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 12px 35px rgba(37,99,235,.4)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 8px 25px rgba(37,99,235,.3)';">
+            Book Your Free Call Now
+          </a>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="book" style="padding: 40px 0; background: #fff;">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 10px;">Book Your Free Strategy Call</h2>
+          <p style="color: #666; font-size: 16px;">Let's discuss how we can scale your Shopify store</p>
+        </div>
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/mikesd/30min?hide_gdpr_banner=1" style="min-width:320px;height:700px;">
+        </div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- Calendly inline widget end -->
+      </section>
+
+      <!-- Disclaimer -->
+      <section style="background:#fff;padding:32px 20px;text-align:center">
+        <style>
+          .disclaimer .box{
+            max-width:880px;
+            margin:0 auto;
+            background:#f9fafb;
+            border:1px solid #e5e7eb;
+            border-radius:14px;
+            padding:18px 20px;
+            font-size:14px;
+            line-height:1.6;
+            color:#475569;
+            box-shadow:0 4px 12px rgba(2,6,23,.06);
+          }
+          .disclaimer .box strong{
+            font-weight:800;
+            color:#0f172a;
+          }
+        </style>
+
+        <div class="disclaimer">
+          <div class="box">
+            💼 <strong>Disclaimer:</strong> This is not a course or an investment product. 
+            Launch Big Brands provides done-for-you operational services for ecommerce businesses. 
+            All earnings depend on many factors including market conditions, advertising budget, product strategy, and client involvement. 
+            There is no guarantee of income or profit.
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Additional Scripts -->
+    <script>
+      // Simple smooth scrolling for anchor links
+      document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+
+        console.log('Launch Big Brands landing page loaded successfully');
+      });
+    </script>
+
+    <!-- Hidden accessibility elements -->
+    <ul hidden>
+      <li id="a11y-refresh-page-message">Choosing a selection results in a full page refresh.</li>
+      <li id="a11y-new-window-message">Opens in a new window.</li>
+    </ul>
+
+    <!-- Calendly Script -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    
+    <!-- FAQ JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const faqContainer = document.getElementById('faq-container');
+        if (!faqContainer) return;
+
+        faqContainer.addEventListener('click', function(e) {
+          const faqQuestion = e.target.closest('.faq-q');
+          if (!faqQuestion) return;
+
+          const faqItem = faqQuestion.closest('.faq-item');
+          const isOpen = faqItem.classList.contains('open');
+
+          // Close all FAQ items
+          faqContainer.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('open');
+            item.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+          });
+
+          // Open the clicked item if it wasn't already open
+          if (!isOpen) {
+            faqItem.classList.add('open');
+            faqQuestion.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    </script>
+
+</body>
+</html>

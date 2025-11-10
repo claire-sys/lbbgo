@@ -1,0 +1,607 @@
+/* YouTube-style Video Player */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', 'YouTube Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #ffffff;
+    color: #000;
+    line-height: 1.4;
+}
+
+.page-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px;
+    min-height: 100vh;
+}
+
+.video-player-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 12px;
+}
+
+.video-player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.video-player video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Scrollable Screenshot Container */
+.screenshot-viewport {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.scrollable-screenshot {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease-out;
+    transform-origin: top center;
+}
+
+/* Human-like scroll animation keyframes */
+@keyframes humanScroll {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(0);
+    }
+    35% {
+        transform: translateY(-8%);
+    }
+    42% {
+        transform: translateY(-10%);
+    }
+    48% {
+        transform: translateY(-6%);
+    }
+    58% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.scrollable-screenshot.scrolling {
+    animation: humanScroll var(--animation-duration, 12s) cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+}
+
+.play-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.play-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+}
+
+.play-button svg {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.talking-head-circle {
+    position: absolute;
+    bottom: 70px;
+    right: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    background: #000;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .talking-head-circle {
+        width: 150px;
+        height: 150px;
+        bottom: 60px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .talking-head-circle {
+        width: 120px;
+        height: 120px;
+        bottom: 50px;
+        right: 12px;
+    }
+}
+
+.circle-video-display {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.circle-video-display video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    padding: 40px 16px 12px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 3;
+}
+
+.video-player:hover .video-controls,
+.video-controls.show {
+    opacity: 1;
+}
+
+.progress-container {
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress-bar:hover {
+    height: 6px;
+}
+
+.progress {
+    height: 100%;
+    background: #ff0000;
+    width: 0%;
+    border-radius: 2px;
+    transition: width 0.1s ease;
+}
+
+.controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.left-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.right-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+}
+
+.control-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.control-btn.muted #volumeIcon path {
+    fill: #ff4444;
+}
+
+.time-display {
+    font-size: 12px;
+    color: #fff;
+    font-weight: 400;
+    white-space: nowrap;
+    margin-left: 8px;
+}
+
+.video-info {
+    padding: 24px 0;
+    text-align: left;
+}
+
+.video-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.video-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.video-author {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+}
+
+.video-date {
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+}
+
+.video-date::before {
+    content: "•";
+    margin-right: 8px;
+    color: #666;
+}
+
+.video-link {
+    color: #3ea6ff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.video-link:hover {
+    text-decoration: underline;
+}
+
+.video-description {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.video-description p {
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-container {
+        padding: 16px;
+    }
+    
+    .video-player {
+        border-radius: 0;
+    }
+    
+    .video-title {
+        font-size: 18px;
+    }
+    
+    .controls-row {
+        height: 36px;
+    }
+    
+    .control-btn {
+        min-width: 28px;
+        height: 28px;
+        padding: 6px;
+    }
+    
+    .time-display {
+        font-size: 11px;
+    }
+    
+
+}
+
+@media (max-width: 480px) {
+    .page-container {
+        padding: 8px;
+    }
+    
+    .video-title {
+        font-size: 20px;
+    }
+    
+    .video-meta {
+        gap: 8px;
+    }
+    
+    .video-link,
+    .video-description {
+        font-size: 13px;
+    }
+    
+    .left-controls {
+        gap: 4px;
+    }
+    
+    .time-display {
+        margin-left: 4px;
+    }
+    
+
+}
+
+/* Call to Action Section */
+.cta-section {
+    margin-top: 48px;
+    padding: 48px 0;
+    text-align: center;
+    border-top: 2px solid rgba(0, 0, 0, 0.05);
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 16px;
+    margin-left: -24px;
+    margin-right: -24px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.cta-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    background: linear-gradient(45deg, #2563eb, #0891b2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    text-align: left;
+}
+
+.cta-hero {
+    margin-bottom: 24px;
+}
+
+.cta-hero-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.cta-intro {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #374151;
+    margin: 0;
+    text-align: center;
+}
+
+.cta-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+    margin: 24px 0;
+}
+
+.cta-message {
+    margin: 24px 0;
+}
+
+.cta-emphasis {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 12px 0;
+    text-align: center;
+}
+
+.cta-description {
+    font-size: 16px;
+    color: #374151;
+    margin: 0 0 16px 0;
+    text-align: center;
+}
+
+.cta-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cta-benefits li {
+    font-size: 15px;
+    color: #4b5563;
+    margin: 8px 0;
+    padding-left: 24px;
+    position: relative;
+}
+
+.cta-benefits li::before {
+    content: "•";
+    color: #2563eb;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.cta-instructions {
+    margin: 24px 0;
+}
+
+.cta-instruction {
+    font-size: 15px;
+    color: #4b5563;
+    margin: 12px 0;
+    text-align: center;
+}
+
+.cta-final {
+    margin: 24px 0;
+    text-align: center;
+}
+
+.cta-rocket {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 8px 0;
+}
+
+.cta-closing {
+    font-size: 16px;
+    color: #374151;
+    margin: 0;
+    font-style: italic;
+}
+
+.calendly-inline-widget {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Style the Calendly iframe container */
+.calendly-inline-widget iframe {
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+/* Responsive CTA */
+@media (max-width: 768px) {
+    .cta-section {
+        margin-top: 24px;
+        padding: 24px 0;
+        margin-left: -12px;
+        margin-right: -12px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+    
+    .cta-title {
+        font-size: 24px;
+    }
+    
+    .cta-hero-title {
+        font-size: 20px;
+    }
+    
+    .cta-content {
+        max-width: 100%;
+    }
+    
+    .calendly-inline-widget {
+        min-width: 100% !important;
+        height: 600px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-section {
+        margin-top: 20px;
+        margin-left: -8px;
+        margin-right: -8px;
+        padding: 24px 8px;
+    }
+    
+    .cta-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .cta-hero-title {
+        font-size: 18px;
+    }
+    
+    .cta-intro,
+    .cta-description {
+        font-size: 14px;
+    }
+    
+    .cta-emphasis {
+        font-size: 16px;
+    }
+    
+    .cta-benefits li {
+        font-size: 14px;
+    }
+    
+    .cta-instruction {
+        font-size: 14px;
+    }
+    
+    .cta-rocket {
+        font-size: 16px;
+    }
+    
+    .cta-closing {
+        font-size: 14px;
+    }
+    
+    .calendly-inline-widget {
+        height: 550px !important;
+    }
+}
